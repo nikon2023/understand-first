@@ -49,3 +49,5 @@ TBD.
 - [ ] Keep
 - [ ] Revise
 - [ ] Reject candidate change
+
+> v0.2 candidate: no observed runs have been added. For the A/B/C test, use [ABC_RUN_LOG.md](ABC_RUN_LOG.md). Keep this original 9-run table unchanged as the initial test baseline template.
