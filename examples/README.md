@@ -18,7 +18,7 @@ Test three decisions:
 |---|---|---:|---|
 | 01 Direct | Direct → L1 | 3 | unnecessary protocol overhead |
 | 02 Diagnose | Diagnose → one critical question | 3 | too many low-value questions |
-| 03 Escalate | L1 → L2 | 3 | over-explaining in text or over-escalating |
+| 03 Escalate | Direct L2 | 3 | over-explaining in text or over-escalating |
 
 Total: **9 runs**.
 
@@ -113,3 +113,7 @@ Only then edit `SKILL.md`.
 The original three cases remain the **9-run smoke test**. Add `04-interactive.md` and `05-dynamic.md` for capability/authorization boundaries, then use [`ABC_PROTOCOL.md`](ABC_PROTOCOL.md) to compare 3 arms across 5 cases (45 paired runs). **No runs have been executed by this change.** Keep the existing 9 blank rows as a historical baseline template, not PASS evidence. Record the new trials separately in `ABC_RUN_LOG.md`.
 
 Each run distinguishes **route correctness**, **runtime feasibility**, **render success**, **human understanding**, and **evidence fidelity**. Unobserved comprehension is not success.
+
+## Reproducible local smoke runner
+
+Run `node scripts/run-smoke.mjs --dry-run` to inspect the fixed 9-trial plan without a model call. Run `node scripts/run-smoke.mjs` with an authenticated `codex` CLI to generate nine **actual, isolated** answers. The runner saves raw output and an ungraded manifest under `eval-results/`; it does not create PASS scores, infer user comprehension, or push results to GitHub. Review against case files, then explicitly transfer judged evidence to the run log. See [runner instructions](../scripts/README.md).
