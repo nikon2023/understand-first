@@ -107,3 +107,9 @@ Skill Revision Candidate
 ```
 
 Only then edit `SKILL.md`.
+
+## v0.2 Fast Gate + Runtime evaluation (candidate)
+
+The original three cases remain the **9-run smoke test**. Add `04-interactive.md` and `05-dynamic.md` for capability/authorization boundaries, then use [`ABC_PROTOCOL.md`](ABC_PROTOCOL.md) to compare 3 arms across 5 cases (45 paired runs). **No runs have been executed by this change.** Keep the existing 9 blank rows as a historical baseline template, not PASS evidence. Record the new trials separately in `ABC_RUN_LOG.md`.
+
+Each run distinguishes **route correctness**, **runtime feasibility**, **render success**, **human understanding**, and **evidence fidelity**. Unobserved comprehension is not success.
