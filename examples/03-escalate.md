@@ -12,19 +12,17 @@ Verify that `understand-first` escalates representation only when structure is t
 
 ```text
 Relationship confusion
-→ brief L1 definitions
-→ detect structural bottleneck
-→ L2 diagram
+→ recognize structural bottleneck
+→ select L2 directly (optional brief definitions)
+→ render only the structure needed
 → stop
 ```
 
 ## Expected behavior
 
-The response may first give one-line definitions.
+The response may include one-line definitions, but **must not be required to generate a separate L1 answer before L2**. It should select L2 directly because the user explicitly cannot reconstruct the relationships from prose.
 
-It should then switch to a structural representation because the user explicitly cannot reconstruct the relationships from prose.
-
-A minimal acceptable shape is:
+An *illustrative* shape is:
 
 ```text
 Project
@@ -44,11 +42,12 @@ State N+1
 Next Run
 ```
 
-The exact topology may differ if the response correctly distinguishes containment from state transition.
+The actual project-specific relationships are not included in this isolated test prompt. The assistant should distinguish containment from state transitions, and label unverified topology as illustrative rather than invent authoritative project facts.
 
 ## PASS criteria
 
 - Recognizes that relationships, not vocabulary, are the main difficulty.
+- Chooses L2 directly; avoids a mandatory L1-first pass.
 - Uses L2 because L1 alone is insufficient.
 - Diagram exposes hierarchy and/or transition semantics.
 - Does not jump to L3 interactive web.

@@ -88,72 +88,69 @@ If yes, extract a reusable capability candidate.
 
 ---
 
-## 3. Representation Ladder
+## 3. Fast Gate: choose once when possible
 
-Use the lowest effective rung.
+Start with a lightweight decision. Do not run a visible checklist by default.
 
-Do not generate all four levels by default.
+- **Direct:** Enough information, no material ambiguity; answer immediately, normally at L1.
+- **Diagnose:** Missing information could materially change the answer; use the unchanged Canonical Preflight and ask at most one final high-information question. Wait for the answer if it is essential.
+- **Represent:** The bottleneck is how the information is expressed; directly choose L1, L2, L3, or L4 based on what the human needs to understand.
 
-### L1 — Clear Text
+A complex topic does not by itself require a rich artifact. Do not perform L1 → L2 → L3 → L4 as mandatory sequential generation. A request for a parameter-driven simulation may go directly to L3.
 
-Default to concise, low-ambiguity prose.
+**Verify** and **Learn** are optional cross-cutting checks, not mutually exclusive primary routes.
 
-Use ASD-STE100-inspired writing rather than claiming formal STE100 compliance.
+## 4. Representation Ladder (decision, not rendering instructions)
 
-Prefer:
+Use the lowest effective level that satisfies the actual understanding need. Distinguish **the comprehension need** from **the output file format**. An HTML page with a static flowchart is L2, not L3.
 
-- one main idea per sentence;
-- active voice where natural;
-- short sentences;
-- explicit subjects and actions;
-- minimal decoration;
-- preserved uncertainty.
+Choose directly:
 
-If text resolves the problem, stop.
+- **L1 / Information:** Clear, concise native text is sufficient. Use ASD-STE100-inspired prose without claiming certified compliance; one main idea per sentence, active voice where natural, uncertainty preserved.
+- **L2 / Relationships:** The reader needs to see structure, hierarchy, architecture, causal relationships, or a process. Use a native diagram when sufficient; optionally delegate to a diagram-capable renderer.
+- **L3 / Manipulation:** The reader needs to change parameters, switch states, compare paths, or see feedback that is actually computed or state-dependent. A static HTML page or a choice form alone does not prove true simulation.
+- **L4 / Dynamics:** Time-dependent evolution or progressive animation is essential. Suggest an appropriate dynamic representation. **Generate an actual video only when explicitly requested or approved by the user.** Otherwise use a suitable L2/L3 fallback.
 
-### L2 — Diagram
+Avoid unnecessary media: do not upgrade because the available tool is attractive or the topic has many sections.
 
-Escalate when structure is the main difficulty.
+## 5. Runtime Capability Check
 
-Use a diagram for hierarchy, process, causal chains, architecture, state transitions, or branching logic.
+For a chosen level above L1, check the runtime **only if needed**:
 
-The diagram must expose relationships.
+1. Availability — Is the selected tool installed or accessible in this host?
+2. Capability — Does it implement the specific diagram, interaction, or animation needed?
+3. Input/dependency — Are required data, paths, tools, and dependencies present?
+4. Output — Can the human open and use the result in the current environment?
+5. Fidelity — Can the runtime preserve source meaning and evidence status?
 
-Do not merely put paragraphs into boxes.
+Capability status is an **adapter convention**, not a claimed native `answer-me-with-html` API:
 
-### L3 — Interactive Web
+- `SUPPORTED`: the actual required behavior is implementable.
+- `DEGRADED`: a useful but clearly limited alternative is possible.
+- `UNSUPPORTED`: the essential behavior cannot be delivered.
 
-Escalate when understanding requires manipulation or comparison.
+When a runtime is unavailable, use a native supported alternative; do not install dependencies or claim success without authorization. A failed render is a technical failure, not proof that the user's comprehension needs a higher level.
 
-Use an interactive page for:
+## 6. Feedback and Re-routing
 
-- changing parameters;
-- switching states;
-- comparing alternatives;
-- exploring paths;
-- observing feedback;
-- testing what-if scenarios.
+After rendering, distinguish three different outcomes:
 
-The interaction must answer a specific question.
+- **Render success:** an artifact was produced and opened/verified where possible.
+- **Understanding success:** the human can explain, apply, or check the relevant relationship; do not infer this from silence.
+- **Evidence validity:** source claims and uncertainty remain accurate.
 
-### L4 — Dynamic Explainer
+If the human remains confused, or a runtime fails, identify the remaining cause and run Fast Gate again. Re-route only when the new evidence warrants it. A renderer may report limitations or recommend another format; it must not autonomously override the selected level or request video creation.
 
-Escalate when the main difficulty is temporal or dynamic.
+## 7. Runtime Adapter Reference
 
-Use animation or video for:
+See [`references/representation-runtime.md`](references/representation-runtime.md) for the optional `answer-me-with-html` adapter and fallbacks. Do not copy the third-party skill into this repository. Keep its proactive/always-on preference from overriding the lowest-effective-representation rule.
 
-- evolving systems;
-- time-dependent causality;
-- spatial transformation;
-- progressive concept construction.
+The preflight, understanding goals, Evidence Gate, and capability lifecycle remain independent of any renderer.
 
-Build the explanation step by step.
 
----
+## 8. Escalation Policy
 
-## 4. Escalation Rules
-
-Escalate one rung when at least one condition is true:
+Re-run Fast Gate and choose the directly appropriate level (not necessarily the next rung) when new evidence shows the current representation is insufficient. Useful signals include:
 
 - the same concept was explained twice and remains unclear;
 - prose requires repeated rereading to reconstruct structure;
@@ -162,11 +159,11 @@ Escalate one rung when at least one condition is true:
 - manipulation is necessary to build intuition;
 - temporal causality is the core difficulty.
 
-Do not escalate because a richer format looks more impressive.
+Do not escalate because a richer format looks more impressive. Never let a renderer override the chosen level. On runtime failure, prefer a supported fallback. Do not produce video without explicit request or approval.
 
 ---
 
-## 5. Evidence Gate
+## 9. Evidence Gate
 
 Clear presentation does not imply correctness.
 
@@ -186,7 +183,7 @@ Do not let a diagram, webpage, or video convert a hedge into a fact.
 
 ---
 
-## 6. Capability Extraction
+## 10. Capability Extraction
 
 After solving a meaningful recurring problem, test whether the result can become a reusable capability.
 
@@ -210,7 +207,7 @@ A reusable rule should include:
 
 ---
 
-## 7. Response Modes
+## 11. Response Modes
 
 ### Direct
 
@@ -226,11 +223,9 @@ Use for ambiguous, strategic, analytical, or repeatedly blocked questions.
 
 Expose only assumptions, missing information, the common failure mode, and one critical question that materially matter.
 
-### Explain
+### Represent
 
-Use the Representation Ladder.
-
-Stop at the lowest effective rung.
+Run the Fast Gate once and choose L1/L2/L3/L4 based on the comprehension need. Check actual runtime capabilities and stop at the lowest effective rung.
 
 ### Verify
 
@@ -246,7 +241,7 @@ Do not silently globalize it.
 
 ---
 
-## 8. Final Check
+## 12. Final Check
 
 Before finishing a substantive answer, silently check:
 
@@ -259,6 +254,18 @@ Before finishing a substantive answer, silently check:
 - Are we overgeneralizing from one case?
 
 Expose only the checks that improve the user's decision or understanding.
+
+---
+
+## 13. v0.2 Candidate Evaluation
+
+This routing integration is **candidate behavior**, not validated performance.
+
+Before release, compare the same test prompts under baseline `answer-me-with-html` routing, v0.1 full instructions, and v0.2 Fast Gate. Preserve original `examples/01–03` as a 9-run smoke baseline, then use the additional L3/L4 cases and the A/B/C comparison protocol. Log the actual selected route, capability result, render status, confusion/feedback status, elapsed time where measured, and evidence fidelity. Leave unexecuted trials empty.
+
+Failure taxonomy: F1 over-diagnosis; F2 under-diagnosis; F3 over-escalation; F4 under-escalation; F5 evidence inflation; F6 capability mismatch; F7 renderer override; F8 false understanding; F9 routing overhead.
+
+Do not claim a speed or accuracy improvement before measuring it.
 
 ---
 

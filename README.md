@@ -11,6 +11,14 @@ It is designed for work where the human must understand:
 - how to check the result;
 - what can be reused next time.
 
+## v0.2 Candidate — Fast Gate + optional answer-me-with-html
+
+The next release candidate adds **a one-pass Direct / Diagnose / Represent gate**, direct L1–L4 representation selection, a conditional runtime capability check, and evidence-based re-routing. It is **not validated**: no routing accuracy or speed improvements are claimed.
+
+`understand-first` owns initial routing; `answer-me-with-html` is an **optional executor** for suitable static diagrams/pages, reader feedback, or explicitly requested video. It is not always-on. HTML alone does not mean L3; genuine L3 requires state-dependent interaction and capability verification. No video without explicit request/approval.
+
+See [runtime boundary](references/representation-runtime.md), [test cases](examples/README.md), and [A/B/C protocol](examples/ABC_PROTOCOL.md).
+
 ## Core loop
 
 ```text
@@ -160,7 +168,15 @@ understand-first/
 ├── SKILL.md
 ├── README.md
 ├── README.zh-CN.md
-└── CHANGELOG.md
+├── CHANGELOG.md
+├── references/
+│   └── representation-runtime.md
+└── examples/
+    ├── README.md
+    ├── 01-direct.md ... 05-dynamic.md
+    ├── ABC_PROTOCOL.md
+    ├── RUN_LOG.md
+    └── ABC_RUN_LOG.md
 ```
 
 ## Suggested invocation
