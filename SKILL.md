@@ -150,7 +150,7 @@ The preflight, understanding goals, Evidence Gate, and capability lifecycle rema
 
 ## 8. Escalation Policy
 
-Escalate one rung when at least one condition is true:
+Re-run Fast Gate and choose the directly appropriate level (not necessarily the next rung) when new evidence shows the current representation is insufficient. Useful signals include:
 
 - the same concept was explained twice and remains unclear;
 - prose requires repeated rereading to reconstruct structure;
