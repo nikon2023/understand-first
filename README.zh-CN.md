@@ -13,6 +13,14 @@
 3. **怎么验证？**
 4. **下次能复用什么能力？**
 
+## v0.2 Candidate｜Fast Gate 与可选 answer-me-with-html
+
+本轮增加一次性 **Direct / Diagnose / Represent** 快速判断；按真实理解需求直接选择 L1–L4。按需检查工具是否可用、是否能实现所需交互，并依据实际反馈重新路由。**尚未完成实验，不宣称速度或准确率提升。**
+
+`understand-first` 判断初始路由，`answer-me-with-html` 是**可选表达执行器**，不采用 Always-on。静态 HTML 不等于 L3；L3 需要真实状态/参数交互。视频必须由用户明确请求或同意。
+
+参阅 [Runtime 能力边界](references/representation-runtime.md)、[测试案例](examples/README.md) 与 [A/B/C 对照协议](examples/ABC_PROTOCOL.md)。
+
 ## 核心闭环
 
 ```text
@@ -210,7 +218,9 @@ understand-first/
 ├── SKILL.md
 ├── README.md
 ├── README.zh-CN.md
-└── CHANGELOG.md
+├── CHANGELOG.md
+├── references/representation-runtime.md
+└── examples/ (01–05、ABC_PROTOCOL、Run Logs)
 ```
 
 ## 推荐调用方式
